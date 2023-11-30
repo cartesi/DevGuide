@@ -2,7 +2,7 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Setting up Your Development Environment](#setting-up-your-development-environment)
+2. [Setting up Your Development Environment](#setting-up-your--development-environment)
    1. [Installing & Configuring Docker](#installing--configuring-docker)
    2. [Installing Python](#installing-python)
    3. [Installing Node.js/NPM](#installing-nodejsnpm)
