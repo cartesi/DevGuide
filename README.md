@@ -7,9 +7,9 @@
    1. [Prerequisites](#prerequisites)
    2. [Installation](#installation)
 2. [Developer Guides](#developer-guides)
-   1. [Mac](/mac/guide.md)
-   2. [Linux](/linux/guide.md)
-   3. [Windows](/windows/guide.md)
+   1. [Mac](/mac/README.md)
+   2. [Linux](/linux/README.md)
+   3. [Windows](/windows/README.md)
 
 ## Introduction
 
@@ -29,13 +29,13 @@ This guide has 3 versions that caters to macOS, Linux and Windows operating syst
 
 ### Mac
 
-[Go to macOS Developer Guide](mac/guide.md)
+[Go to macOS Developer Guide](mac/README.md)
 
 ### Linux
 
-[Go to Linux Developer Guide](linux/guide.md)
+[Go to Linux Developer Guide](linux/README.md)
 
 ### Windows
 
-[Go to Windows Developer Guide](windows/guide.md)
+[Go to Windows Developer Guide](windows/README.md)
 
