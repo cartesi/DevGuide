@@ -2,7 +2,7 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Setting up Your Development Environment](#setting-up-your-development-environment)
+2. [Setting up Your Development Environment](#setting-up-your--development-environment)
    1. [Installing & Configuring Docker](#installing--configuring-docker)
    2. [Installing Python](#installing-python)
    3. [Installing Node.js/NPM](#installing-nodejsnpm)
@@ -31,39 +31,25 @@
 
 ## Introduction
 
-This guide provides detailed instructions tailored for Windows users.
-
-It's essential to have [Windows Subsystem for Linux 2 (WSL2)](https://learn.microsoft.com/en-us/windows/wsl/install) installed and correctly configured to enjoy a seamless dApp development experience with Cartesi Rollups. WSL2 provides a Linux-like environment that aligns with the Cartesi ecosystem.
-
-Don't worry – this guide includes detailed instructions for setting up WSL2, so you'll be in good hands if you follow the provided steps.
+This guide provides detailed instructions tailored for Linux users
 
 ## Setting up Your  Development Environment
 
 Here are the general requirements:
-- WSL2 and Ubuntu
 - Python3
 - Node.js
 - Yarn
 - Docker Desktop
 
-### Installing WSL2 and Ubuntu
-
-1. Open Microsft Store and install WSL2
-
-2. Open Microsoft Store and install the Ubuntu distro
-
 ### Installing & Configuring Docker
 
-1. Download and run the Docker Desktop installer
-- [Docker Desktop for Windows(Installer)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?_gl=1*q8ki63*_ga*MTA0MTIzOTI4LjE2OTcyNzA0OTY.*_ga_XJWPQMJYHQ*MTY5NzQ2ODc2Ny41LjEuMTY5NzQ3MDUyNi41OC4wLjA.)
+1. Download Docker Desktop for Linux using the URL below 
+- [Docker Desktop for Linux](https://docs.docker.com/desktop/install/ubuntu/)
 
 
 ### Installing Node.js/NPM
 
-1. Open the Ubuntu terminal (installed earlier with WSL) 
-
-
-2. Install nvm by running:
+1. First install nvm by running:
 
    ```
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
@@ -92,16 +78,14 @@ Here are the general requirements:
 
 ### Installing Python
 
-1. In the Ubuntu terminal (installed earlier with WSL), run:
-
-    ```
-    sudo apt update
-    sudo apt install python3
-    ```
+```
+sudo apt update
+sudo apt install python3
+```
 
 ### Installing Yarn
 
-1. In the Ubuntu terminal, add Yarn APT Repository by running:
+1. Open your terminal and add Yarn APT Repository
 
    ```
    sudo apt update
@@ -132,14 +116,6 @@ Here are the general requirements:
    ```
 
    After installing QEMU, the platform `linux/riscv64` should appear in the platforms list. Docker now supports the RISCV platform
-
-### Important Note
-
-To ensure optimal compatibility and performance, Docker Engine relies on WSL2 for its operation. Therefore, start WSL2 by launching Powershell and running the "wsl" command before launching the Docker Desktop. 
-
-We will not run any more commands in the native Windows Powershell/terminal. Everything else will be done in the Ubuntu distro we installed. 
-
-For a seamless development workflow, it is recommended not to execute Docker commands within Powershell or the WSL terminal. Instead, open the Ubuntu distribution that you have installed, and perform all coding and command execution within that Linux environment.
 
 ## Build your backend | Python Tutorial
 
@@ -368,7 +344,7 @@ Build the back-end by running:
 ```
 docker buildx bake machine --load --set *.args.NETWORK=<network>
 ```
-Replace `<network>`  with your prefered network.
+Replace `<network>`  with your prefered network. We strongly recommend Sepolia as the network, due to it being faster and easier to work with.
 
 
 ### Step 2: Deploying your app's backend
@@ -380,7 +356,7 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
       ```
       export MNEMONIC=<your 12 words here>
       ```
-
+   **Note:** Be sure to have some testnet eth to deploy without any problems.
 
 2. Set your Sepolia RPC URL as an environment variable: 
      ```
