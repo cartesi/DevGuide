@@ -102,7 +102,6 @@ Double-click on the Docker.app in the Applications folder to start Docker.
 
 This section is the Python tutorial for the dApp
 
-
 ### Step 1: Creating your backend 
 
 1. Fork and Clone the [rollups-examples](https://github.com/cartesi/rollups-examples) repository for sample project examples 
@@ -127,15 +126,14 @@ This section is the Python tutorial for the dApp
    docker buildx bake --load
    ```
 
-
 3. Start your local node from the images you just built by running:
 
    ```
    docker compose -f ../docker-compose.yml -f ./docker-compose.override.yml -f ../docker-compose-host.yml up
    ```
 
-
 ### Step 3: Run the backend
+
 Next, we will run the application's backend inside the running local node. 
 
 Inside the root directory of `calculator` folder, enter the following commands to run the backend:
@@ -144,13 +142,13 @@ Inside the root directory of `calculator` folder, enter the following commands t
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
-ROLLUP_HTTP_SERVER_URL="http://127.0.0.1:5004" python3 echo.py
+ROLLUP_HTTP_SERVER_URL="http://127.0.0.1:5004" python3 calculator.py
 ```
 
 You can use also "entr" to automatically restart the backend whenever it detects changes:
 
 ```
-ls *.py | ROLLUP_HTTP_SERVER_URL="http://127.0.0.1:5004" entr -r python3 echo.py
+ls *.py | ROLLUP_HTTP_SERVER_URL="http://127.0.0.1:5004" entr -r python3 calculator.py
 ```
 
 
@@ -194,7 +192,7 @@ Congratulations! You just built and ran your first dApp on Cartesi Rollups!
 
 To shut down the node and eliminate all active Docker containers, you can follow these steps
 
-1. Terminate the environment by using the shortcut CTRL + C.
+1. Terminate the environment.
 
 2. Run the command below in your dApp directory:
 
@@ -202,14 +200,15 @@ To shut down the node and eliminate all active Docker containers, you can follow
    docker compose -f ../docker-compose.yml -f ./docker-compose.override.yml down -v
    ```
 
+
 ## Build your backend | JavaScript Tutorial
 
-This section is the JavaScript tutorial for the dApp
+This section is the JavaScript tutorial for the dApp.
 
 
 ### Step 1: Creating your backend 
 
-1. Fork and Clone the [rollups-examples](https://github.com/cartesi/rollups-examples) repository for sample project examples 
+1. Fork and clone the [rollups-examples](https://github.com/cartesi/rollups-examples) repository for sample project examples 
 
 
 2. Change the directory 
@@ -225,7 +224,7 @@ This section is the JavaScript tutorial for the dApp
 
 1. Make sure you still have the Docker engine up and running
 
-2. Build the Docker images from the pre-configured Docker configuration for each template by running the command (in the `calculator` directory): 
+2. Build the Docker images from the pre-configured Docker configuration for each template by running the command (in the `echo-js` directory): 
 
    ```
    docker buildx bake --load
@@ -242,7 +241,7 @@ This section is the JavaScript tutorial for the dApp
 ### Step 3: Run the backend
 Next, we will run the application's backend inside the running local node. 
 
-Inside the root directory of `calculator` folder, enter the following commands to run the backend:
+Inside the root directory of `echo-js` folder, enter the following commands to run the backend:
 
 ```
 yarn
@@ -296,9 +295,9 @@ Congratulations! You just built and ran your first dApp on Cartesi Rollups!
 
 To shut down the node and eliminate all active Docker containers, you can follow these steps
 
-1. Terminate the environment by using the shortcut CTRL + C.
+1. Terminate the environment.
 
-2. Run the command below in your dApp directory:
+2. Run the command below in your backend directory:
 
    ```
    docker compose -f ../docker-compose.yml -f ./docker-compose.override.yml down -v
@@ -336,14 +335,14 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
 
 1. Set your Metamask 12-word phrase as an environment variable:   
       ```
-      export MNEMONIC=your 12 words here
+      export MNEMONIC=<your 12 words here>
       ```
 
 
 2. Set your Sepolia RPC URL as an environment variable: 
-      ```
-	export RPC_URL=your RPC URL here
-	```
+     ```
+	  export RPC_URL=<your RPC URL here>
+	  ```
 
 
 3. Deploy to the Cartesi dApp factory contract on the target network:
@@ -353,14 +352,13 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
 
      Replace `<example>` with your project name and `<network>` with the target network(ie sepolia)
 
-
 4. Once the deployment is successful, stop the docker containers and remove the volumes created by running:
     ```
     DAPP_NAME=<example> docker compose --env-file ../env.<network> -f ../deploy-testnet.yml down -v
     ```
 
 
-5. After successful deployment, a file will be created at ../deployments/<network>/<example>.json (in the root of the rollups-example directory) with the deployed contract's address. Or run the command below for the address to be printed in your console: 
+5. After successful deployment, a file will be created at `../deployments/<network>/<example>.json` with the deployed contract's address. Alternatively you run the command below for the address to be printed in your console: 
 
    ```
    cat ../deployments/<network>/<example>.json
@@ -382,6 +380,7 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
    ```
 
 
+
 3. Start the Validator Node
 
    ```
@@ -392,14 +391,12 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
 
 4. Alternative (HOST MODE)
 
-   If you prefer, you can run the validator node in host mode by executing this command:
+   If you prefer to, you can run the validator node in host mode by executing this command:
 
     ```
     DAPP_NAME=<example> docker compose --env-file ../env.<network> -f ../docker-compose-testnet.yml -f ./docker-compose.override.yml -f ../docker-compose-host-testnet.yml up
     ```
     This process ensures your Cartesi Validator Node is up and running, ready to interact with your dApp's smart contract and handle the back-end logic effectively
-
-
 
 
 ## Client Interaction with Deployed dApps
@@ -408,12 +405,12 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
 
 When sending data, the frontend console application needs to communicate with the underlying layer-1 blockchain. 
 
-Here is what needs to be configured to make that happen.
+Here is what you need to configure to make that happen:
 - An RPC gateway
 - The address of the Rollups smart contract on that blockchain 
 - An account with sufficient funds.
 
-Here is a cheat sheet that can help you properly configure your requests for sending data:
+A cheat sheet that can help you properly configure your requests for sending data:
 
 ``` 
 --index         Notice or Voucher index within its associated Input
@@ -434,12 +431,10 @@ From your frontend console, you can send input to an instance of the calculator 
 ```
 export MNEMONIC=your 12 words here
 export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<USER_KEY>
-
 yarn start input send --payload "my message" --dapp echo-python
 ```
 
 For other contracts, you can simply specify the address of the recipient contract to carry out the transaction.  
-
 ```
 yarn start input send --payload "my message" --address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C
 ```
@@ -448,7 +443,6 @@ yarn start input send --payload "my message" --address 0x70ac08179605AF2D9e75782
 ### Deposit tokens
 
 Every deployed contract in the Cartesi rollups dApp factory can send and receive ERC-20 & ERC-721 tokens. 
-
 ```
 Here is a cheat sheet of all the options available
 --erc20         ERC-20 address
@@ -462,38 +456,25 @@ Here is a cheat sheet of all the options available
 --tokenId       The ID of the ERC-721 token being transferred
 ```
 
-*Here is an example*:
+*An example*:
 From the frontend console, you can deposit some ERC-20 tokens from your wallet to a smart contract with this address 
-
 `0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C` deployed on Sepolia. 
-
 ```
 export MNEMONIC=your 12 words here
-
 export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/****
-
 yarn start erc20 deposit --amount 10000000000000000000 --address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C
-
 ```
-
-
-
 
 You can also deposit ERC-721 tokens from your wallet to the smart contract. 
-
 ```
 export MNEMONIC=your 12 words here
-
 export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/****
-
 yarn start erc721 deposit --tokenId 4 --address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C
 ```
 
 > This deposits the token with id 4 to this address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C on Sepolia
 
-
 *Here are several operations you can perform from the frontend console when you run `yarn start --help`*
-
 ```
 yarn start --help
 
@@ -509,5 +490,4 @@ Commands:
 Options:
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
-
 ```
