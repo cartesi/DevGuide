@@ -119,17 +119,13 @@ Here are the general requirements:
 
 ### Check for RISC-V support
 
-1. Launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
+1. In the Windows terminal, launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
 
    ```
    docker buildx ls
    ```
 
-   If you do not see linux/riscv64 in the platforms list, install QEMU which will be used by Docker to emulate RISC-V instructions to build a Cartesi Machine with the command below: 
-
-   ```
-   sudo apt install qemu-user-static
-   ```
+   If you installed docker Desktop correctly, you will see the linux/riscv64 in the plataforms list. But if you do not see it there, install QEMU which will be used by Docker to emulate RISC-V instructions to build a Cartesi Machine from this [Link](https://www.qemu.org/download/)
 
    After installing QEMU, the platform `linux/riscv64` should appear in the platforms list. Docker now supports the RISCV platform
 
@@ -177,9 +173,12 @@ This section is the Python tutorial for the dApp
 
 ### Step 3: Run the backend
 
-Next, we will run the application's backend inside the running local node. 
+Next, we will run the application's backend inside the running local node. First install the venv for Python with:
+```
+sudo apt install python3.10-venv
+```
 
-Inside the root directory of `calculator` folder, enter the following commands to run the backend:
+Then, inside the root directory of `calculator` folder, enter the following commands to run the backend:
 
 ```
 python3 -m venv .venv
