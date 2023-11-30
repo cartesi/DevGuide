@@ -426,7 +426,7 @@ A cheat sheet that can help you properly configure your requests for sending dat
 
 ### Sending inputs
 
-From your frontend console, you can send input to an instance of the calculator app/echo-python backend already deployed to Sepolia, using your private key and your RPC gateway. You can run these commands from the rollups-examples/frontend console directory.
+From your frontend console, you can send input to an instance of the calculator app/echo-python backend already deployed to Sepolia, using your private key and your RPC gateway. You can run these commands from the `rollups-examples/frontend-console` directory.
 
 ```
 export MNEMONIC=your 12 words here
