@@ -7,9 +7,9 @@
    1. [Prerequisites](#prerequisites)
    2. [Installation](#installation)
 2. [Developer Guides](#developer-guides)
-   1. [Mac](#mac)
-   2. [Linux](#linux)
-   3. [Windows](#windows)
+   1. [Mac](/mac/guide.md)
+   2. [Linux](/linux/guide.md)
+   3. [Windows](/windows/guide.md)
 
 ## Introduction
 
