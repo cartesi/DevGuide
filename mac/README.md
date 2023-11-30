@@ -87,7 +87,7 @@ Double-click on the Docker.app in the Applications folder to start Docker.
 1. Launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
 
    ```
-   docker buildx ls
+   docker buildx ls | grep linux/riscv64
    ```
 
    If you do not see linux/riscv64 in the platforms list, install QEMU which will be used by Docker to emulate RISC-V instructions to build a Cartesi Machine with the command below: 
@@ -323,9 +323,9 @@ You can specify which blockchain network you're building the back-end machine fo
 Build the back-end by running:
 
 ```
-docker buildx bake machine --load --set *.args.NETWORK=<network>
+bash -c 'docker buildx bake machine --load --set *.args.NETWORK=<network>' 
 ```
-Replace `<network>`  with your prefered network.
+Replace `<network>`  with your prefered network. We strongly recommend Sepolia as the network, due to it being faster and easier to work with.
 
 
 ### Step 2: Deploying your app's backend
@@ -337,6 +337,8 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
       ```
       export MNEMONIC=<your 12 words here>
       ```
+
+   **Note:** Be sure to have some testnet eth to deploy without any problems. 
 
 
 2. Set your Sepolia RPC URL as an environment variable: 

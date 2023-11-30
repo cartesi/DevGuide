@@ -367,7 +367,7 @@ Build the back-end by running:
 ```
 docker buildx bake machine --load --set *.args.NETWORK=<network>
 ```
-Replace `<network>`  with your prefered network.
+Replace `<network>`  with your prefered network. We strongly recommend Sepolia as the network, due to it being faster and easier to work with.
 
 
 ### Step 2: Deploying your app's backend
@@ -379,6 +379,7 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
       ```
       export MNEMONIC=<your 12 words here>
       ```
+   **Note:** Be sure to have some testnet eth to deploy without any problems.
 
 
 2. Set your Sepolia RPC URL as an environment variable: 
