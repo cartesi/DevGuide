@@ -3,9 +3,31 @@
 
 1. [Introduction](#introduction)
 2. [Setting up Your Development Environment](#setting-up-your-development-environment)
+   1. [Installing & Configuring Docker](#installing--configuring-docker)
+   2. [Installing Python](#installing-python)
+   3. [Installing Node.js/NPM](#installing-nodejsnpm)
+   4. [Installing Yarn](#installing-yarn)
+   5. [Check for RISC-V support](#check-for-risc-v-support)
 3. [Build your backend | Python Tutorial](#build-your-backend--python-tutorial)
+   1. [Step 1: Creating your backend](#step-1-creating-your-backend)
+   2. [Step 2: Run the environment locally (Host Mode)](#step-2-run-the-environment-locally-host-mode)
+   3. [Step 3: Run the backend](#step-3-run-the-backend)
+   4. [Step 4: Interacting with the backend(Frontend Interaction)](#step-4-interacting-with-the-backendfrontend-interaction)
+   5. [Step 5: Shutting down the local node](#step-5-shutting-down-the-local-node)
 4. [Build your backend | JavaScript Tutorial](#build-your-backend--javascript-tutorial)
+   1. [Step 1: Creating your backend](#step-1-creating-your-backend-1)
+   2. [Step 2: Run the environment locally (Host Mode)](#step-2-run-the-environment-locally-host-mode-1)
+   3. [Step 3: Run the backend](#step-3-run-the-backend-1)
+   4. [Step 4: Interacting with the backend(Frontend Interaction)](#step-4-interacting-with-the-backendfrontend-interaction-1)
+   5. [Step 5: Shutting down the local node](#step-5-shutting-down-the-local-node-1)
 5. [Deploying your backend](#deploying-your-backend)
+   1. [Step 1: Build your machine to deploy](#step-1-build-your-machine-to-deploy)
+   2. [Step 2: Deploying your app's backend](#step-2-deploying-your-apps-backend)
+   3. [Step 3: Run a validator node](#step-3-run-a-validator-node)
+6. [Client Interaction with Deployed dApps](#client-interaction-with-deployed-dapps)
+   1. [Sending data](#sending-data)
+   2. [Sending inputs](#sending-inputs)
+   3. [Deposit tokens](#deposit-tokens)
 
 ## Introduction
 
@@ -344,7 +366,7 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
    cat ../deployments/<network>/<example>.json
    ```
 
-### Step 4: Run a validator node
+### Step 3: Run a validator node
 Before setting up a Cartesi Validator Node, you should have already deployed your smart contract to a target blockchain network
 
 1. Additional environment variables: You'll need a secure WebSocket endpoint for the RPC gateway (WSS URL). For our Sepolia RPC, here is how we can set it:
@@ -358,7 +380,6 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
    ```
    docker buildx bake server --load --set *.args.NETWORK=sepolia
    ```
-
 
 
 3. Start the Validator Node
@@ -377,3 +398,116 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
     DAPP_NAME=<example> docker compose --env-file ../env.<network> -f ../docker-compose-testnet.yml -f ./docker-compose.override.yml -f ../docker-compose-host-testnet.yml up
     ```
     This process ensures your Cartesi Validator Node is up and running, ready to interact with your dApp's smart contract and handle the back-end logic effectively
+
+
+
+
+## Client Interaction with Deployed dApps
+
+### Sending data
+
+When sending data, the frontend console application needs to communicate with the underlying layer-1 blockchain. 
+
+Here is what needs to be configured to make that happen.
+- An RPC gateway
+- The address of the Rollups smart contract on that blockchain 
+- An account with sufficient funds.
+
+Here is a cheat sheet that can help you properly configure your requests for sending data:
+
+``` 
+--index         Notice or Voucher index within its associated Input
+--input         Input index
+--rpc           URL of the RPC gateway to use
+--address       DApp Rollups contract address
+--addressFile   Path to a file containing the DApp Rollups contract address
+--dapp          DApp name
+--mnemonic      Wallet mnemonic(12 words)
+--accountIndex  Account index from mnemonic
+--url           Reader URL
+```
+
+### Sending inputs
+
+From your frontend console, you can send input to an instance of the calculator app/echo-python backend already deployed to Sepolia, using your private key and your RPC gateway. You can run these commands from the rollups-examples/frontend console directory.
+
+```
+export MNEMONIC=your 12 words here
+export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/<USER_KEY>
+
+yarn start input send --payload "my message" --dapp echo-python
+```
+
+For other contracts, you can simply specify the address of the recipient contract to carry out the transaction.  
+
+```
+yarn start input send --payload "my message" --address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C
+```
+
+
+### Deposit tokens
+
+Every deployed contract in the Cartesi rollups dApp factory can send and receive ERC-20 & ERC-721 tokens. 
+
+```
+Here is a cheat sheet of all the options available
+--erc20         ERC-20 address
+--rpc           URL of the RPC gateway to use
+--address       DApp Rollups contract address
+--addressFile   Path to a file containing the DApp Rollups contract address
+--dapp          DApp name
+--mnemonic      Wallet mnemonic
+--accountIndex  Account index from mnemonic
+--erc721        ERC-721 contract address
+--tokenId       The ID of the ERC-721 token being transferred
+```
+
+*Here is an example*:
+From the frontend console, you can deposit some ERC-20 tokens from your wallet to a smart contract with this address 
+
+`0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C` deployed on Sepolia. 
+
+```
+export MNEMONIC=your 12 words here
+
+export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/****
+
+yarn start erc20 deposit --amount 10000000000000000000 --address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C
+
+```
+
+
+
+
+You can also deposit ERC-721 tokens from your wallet to the smart contract. 
+
+```
+export MNEMONIC=your 12 words here
+
+export RPC_URL=https://eth-sepolia.g.alchemy.com/v2/****
+
+yarn start erc721 deposit --tokenId 4 --address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C
+```
+
+> This deposits the token with id 4 to this address 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C on Sepolia
+
+
+*Here are several operations you can perform from the frontend console when you run `yarn start --help`*
+
+```
+yarn start --help
+
+Commands:
+  index.ts erc20 <command>    Operations with ERC-20 tokens
+  index.ts erc721 <command>   Operations with ERC-721 tokens
+  index.ts input <command>    Operations with inputs
+  index.ts inspect            Inspect the state of the DApp
+  index.ts notice <command>   Operations with notices
+  index.ts report <command>   Operations with reports
+  index.ts voucher <command>  Operations with vouchers
+
+Options:
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+
+```
