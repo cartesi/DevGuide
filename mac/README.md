@@ -378,7 +378,7 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
 
 2. Build a server manager for your target network: 
    ```
-   docker buildx bake server --load --set *.args.NETWORK=<network>
+   bash -c 'docker buildx bake server --load --set *.args.NETWORK=<network>'
    ```
 
 
