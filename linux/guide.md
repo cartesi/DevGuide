@@ -386,7 +386,7 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
 ### Step 3: Run a validator node
 Before setting up a Cartesi Validator Node, you should have already deployed your smart contract to a target blockchain network
 
-1. Additional environment variables: You'll need a secure WebSocket endpoint for the RPC gateway (WSS URL). For our Sepolia RPC, here is how we can set it:
+1. Additional environment variables: You'll need a secure WebSocket endpoint for the RPC gateway (WSS URL). For a Sepolia RPC from [Alchemy](https://www.alchemy.com/), here is how you can set it:
 
    ```
    export WSS_URL=wss://eth-sepolia.g.alchemy.com/v2/****
@@ -395,7 +395,7 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
 
 2. Build a server manager for your target network: 
    ```
-   docker buildx bake server --load --set *.args.NETWORK=sepolia
+   docker buildx bake server --load --set *.args.NETWORK=<network>
    ```
 
 
