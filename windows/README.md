@@ -352,11 +352,12 @@ Until now, we’ve been deploying on a localhost testnet chain and every transac
 Here are the supported public testing networks with the Cartesi Rollups infrastructure:
 
 ```
-gnosis_chiado
-arbitrum_goerli
-optimism_goerli
-polygon_mumbai
+mainnet
 sepolia
+optimism
+optimism_sepolia
+arbitrum
+arbitrum_sepolia
 ```
 ### Step 1: Build your machine to deploy
 
@@ -377,7 +378,7 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
 
 1. Set your Metamask 12-word phrase as an environment variable:   
       ```
-      export MNEMONIC=<your 12 words here>
+      export MNEMONIC='<your 12 words here>'
       ```
    **Note:** Be sure to have some testnet eth to deploy without any problems.
 
