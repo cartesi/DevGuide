@@ -195,7 +195,7 @@ This command guides you through the process of sending inputs interactively.
 
 Deplopyment options with Sunodo is under development and it is expected to be made available to the public soon.
 
-> However, you can deploy dApps built using the primitive approach.
+> However,[deployment options are available for dApps built with the primitive approach](#deploying-your-backend).
 
 ### Learn more
 
