@@ -13,7 +13,7 @@
 
 ## Introduction
 
-Welcome to the Cartesi dApp Developer Guide! This comprehensive guide will assist you building and deployung dApps on Cartesi.
+Welcome to the Cartesi dApp Developer Guide! This comprehensive guide will assist you building and deploying dApps on Cartesi.
 
 ## Getting Started
 
