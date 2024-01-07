@@ -2,48 +2,35 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Setting up Your Development Environment](#setting-up-your--development-environment)
-   1. [Installing & Configuring Docker](#installing--configuring-docker)
-   2. [Installing Python](#installing-python)
-   3. [Installing Node.js/NPM](#installing-nodejsnpm)
-   4. [Installing Yarn](#installing-yarn)
-   5. [Check for RISC-V support](#check-for-risc-v-support)
-3. [Build your backend | Python Tutorial](#build-your-backend--python-tutorial)
-   1. [Step 1: Creating your backend](#step-1-creating-your-backend)
-   2. [Step 2: Run the environment locally (Host Mode)](#step-2-run-the-environment-locally-host-mode)
-   3. [Step 3: Run the backend](#step-3-run-the-backend)
-   4. [Step 4: Interacting with the backend(Frontend Interaction)](#step-4-interacting-with-the-backendfrontend-interaction)
-   5. [Step 5: Shutting down the local node](#step-5-shutting-down-the-local-node)
-4. [Build your backend | JavaScript Tutorial](#build-your-backend--javascript-tutorial)
-   1. [Step 1: Creating your backend](#step-1-creating-your-backend-1)
-   2. [Step 2: Run the environment locally (Host Mode)](#step-2-run-the-environment-locally-host-mode-1)
-   3. [Step 3: Run the backend](#step-3-run-the-backend-1)
-   4. [Step 4: Interacting with the backend(Frontend Interaction)](#step-4-interacting-with-the-backendfrontend-interaction-1)
-   5. [Step 5: Shutting down the local node](#step-5-shutting-down-the-local-node-1)
-5. [Deploying your backend](#deploying-your-backend)
-   1. [Step 1: Build your machine to deploy](#step-1-build-your-machine-to-deploy)
-   2. [Step 2: Deploying your app's backend](#step-2-deploying-your-apps-backend)
-   3. [Step 3: Run a validator node](#step-3-run-a-validator-node)
-6. [Client Interaction with Deployed dApps](#client-interaction-with-deployed-dapps)
-   1. [Sending data](#sending-data)
-   2. [Sending inputs](#sending-inputs)
-   3. [Deposit tokens](#deposit-tokens)
+2. [Setting up Your Development Environment](#setting-up-your-development-environment)
+3. [Build a dApp using Sunodo](#build-a-dapp-using-sunodo)
+4. [Build a dApp using the primitive approach | Python Tutorial](#build-a-dapp-using-the-primitive-approach--python-tutorial)
+5. [Build a dApp using the primitive approach | JavaScript Tutorial](#build-a-dapp-using-the-primitive-approach--javascript-tutorial)
 
 ## Introduction
 
 This guide provides detailed instructions tailored for Windows users.
 
-It's essential to have [Windows Subsystem for Linux 2 (WSL2)](https://learn.microsoft.com/en-us/windows/wsl/install) installed and correctly configured to enjoy a seamless dApp development experience with Cartesi Rollups. WSL2 provides a Linux-like environment that aligns with the Cartesi ecosystem.
+Currently, two(2) methods exist for creating dApps on Cartesi:
 
-Don't worry – this guide includes detailed instructions for setting up WSL2, so you'll be in good hands if you follow the provided steps.
+- The first is a **simplified approach** that uses [Sunodo](docs.sunodo.io), an easy-to-use CLI tool that allows for rapid bootstrapping and building. 
+
+- The second method is the **primitive approach**, which is a more verbose dApp creation process.
+
+This guide provides a detailed yet accessible explanation of how to use these two(2) distinct methods.
+
 
 ## Setting up Your  Development Environment
+
+> It's essential to have [Windows Subsystem for Linux 2 (WSL2)](https://learn.microsoft.com/en-us/windows/wsl/install) installed and correctly configured to enjoy a seamless dApp development experience with Cartesi Rollups. WSL2 provides a Linux-like environment that aligns with the Cartesi ecosystem.
+
 
 Here are the general requirements:
 - WSL2 and Ubuntu
 - Python3
 - Node.js
 - Yarn
+- Sunodo
 - Docker Desktop
 
 ### Installing WSL2 and Ubuntu
@@ -117,6 +104,17 @@ Here are the general requirements:
    sudo apt install yarn
    ```
 
+### Installing Sunodo
+
+ > Sunodo is the recommended tool for building dApps on Cartesi. However, you may choose to skip this if you prefer to use the more primitive approach.
+
+1. Install WSL2 and the Ubuntu distro from Microsoft Store and install Sunodo with:
+
+    ```
+    npm install -g @sunodo/cli
+    ```
+
+
 ### Check for RISC-V support
 
 1. In the Windows terminal, launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
@@ -137,7 +135,86 @@ We will not run any more commands in the native Windows Powershell/terminal. Eve
 
 For a seamless development workflow, it is recommended not to execute Docker commands within Powershell or the WSL terminal. Instead, open the Ubuntu distribution that you have installed, and perform all coding and command execution within that Linux environment.
 
-## Build your backend | Python Tutorial
+
+## Build a dApp using Sunodo
+
+In this section, we will build a dApp using Sunodo. Subsequent sections will guide you through building dApps using the primitive approach.
+
+
+### Creating an application
+
+Run `sunodo create` to quickly start a Cartesi dApp from scratch. It sets up everything you need with template code.
+
+Here are the available templates:
+
+- `cpp`: A template for C++ development.
+- `cpp-low-level`: C++ template using the low level API, instead of the HTTP server
+- `go`: Go lang template
+- `javascript`: A node.js 20 template tailored for JavaScript developers
+- `lua`: Lua 5.4 template
+- `python`: python 3 template
+- `ruby`: ruby template
+- `rust`: rust template
+- `typescript`: TypeScript template
+
+To create a new application from a basic Python template, run:
+
+```
+sunodo create dapp-name --template python
+```
+### Building the application
+
+To build an application, run:
+
+```
+sunodo build
+```
+
+When you run the `sunodo build` command:
+
+Your program's code gets compiled into the RISC-V architecture
+The end result of this process is a Cartesi Machine snapshot, ready to receive inputs.
+ 
+### Running the application
+
+This executes a Cartesi node for the application previously built with `sunodo build`.
+
+```
+sunodo run
+```
+
+### Sending inputs to the application
+
+Your applications can receive inputs by sending transactions with the input payload.
+
+To send inputs, use the command:
+
+```
+sunodo send
+```
+
+This command guides you through the process of sending inputs interactively.
+
+```
+? Select send sub-command (Use arrow keys)
+❯ Send DApp address input to the application.
+  Send ERC-20 deposit to the application.
+  Send ERC-721 deposit to the application.
+  Send ether deposit to the application.
+  Send generic input to the application.
+```
+
+### Deploying your application
+
+Deplopyment options with Sunodo is under development and it is expected to be made available to the public soon.
+
+> However, you can deploy dApps built using the primitive approach.
+
+### Learn more
+
+[This repository](https://github.com/cartesi/sunodo-examples) includes examples of dApps built with Sunodo. 
+
+## Build a dApp using the primitive approach | Python Tutorial
 
 This section is the Python tutorial for the dApp
 
@@ -243,7 +320,7 @@ To shut down the node and eliminate all active Docker containers, you can follow
    ```
 
 
-## Build your backend | JavaScript Tutorial
+## Build a dApp using the primitive approach | JavaScript Tutorial
 
 This section is the JavaScript tutorial for the dApp.
 
@@ -345,7 +422,7 @@ To shut down the node and eliminate all active Docker containers, you can follow
    docker compose -f ../docker-compose.yml -f ./docker-compose.override.yml down -v
    ```
 
-## Deploying your backend
+### Deploying your backend
 
 Until now, we’ve been deploying on a localhost testnet chain and every transaction so far has been to contracts on our local chain.
 
@@ -359,7 +436,7 @@ optimism_sepolia
 arbitrum
 arbitrum_sepolia
 ```
-### Step 1: Build your machine to deploy
+#### Step 1: Build your machine to deploy
 
 You can specify which blockchain network you're building the back-end machine for by providing the network information. 
 
@@ -371,7 +448,7 @@ docker buildx bake machine --load --set *.args.NETWORK=<network>
 Replace `<network>`  with your prefered network. We strongly recommend Sepolia as the network, due to it being faster and easier to work with.
 
 
-### Step 2: Deploying your app's backend
+#### Step 2: Deploying your app's backend
 
 Great, we're all set for deployment with our Docker image. Here's what you need to do next:
 
@@ -408,7 +485,7 @@ Great, we're all set for deployment with our Docker image. Here's what you need 
    cat ../deployments/<network>/<example>.json
    ```
 
-### Step 3: Run a validator node
+#### Step 3: Run a validator node
 Before setting up a Cartesi Validator Node, you should have already deployed your smart contract to a target blockchain network
 
 1. Additional environment variables: You'll need a secure WebSocket endpoint for the RPC gateway (WSS URL). For a Sepolia RPC from [Alchemy](https://www.alchemy.com/), here is how you can set it:
@@ -443,9 +520,9 @@ Before setting up a Cartesi Validator Node, you should have already deployed you
     This process ensures your Cartesi Validator Node is up and running, ready to interact with your dApp's smart contract and handle the back-end logic effectively
 
 
-## Client Interaction with Deployed dApps
+### Client Interaction with Deployed dApps
 
-### Sending data
+#### Sending data
 
 When sending data, the frontend console application needs to communicate with the underlying layer-1 blockchain. 
 
@@ -468,7 +545,7 @@ A cheat sheet that can help you properly configure your requests for sending dat
 --url           Reader URL
 ```
 
-### Sending inputs
+#### Sending inputs
 
 From your frontend console, you can send input to an instance of the calculator app/echo-python backend already deployed to Sepolia, using your private key and your RPC gateway. You can run these commands from the `rollups-examples/frontend-console` directory.
 
@@ -484,7 +561,7 @@ yarn start input send --payload "my message" --address 0x70ac08179605AF2D9e75782
 ```
 
 
-### Deposit tokens
+#### Deposit tokens
 
 Every deployed contract in the Cartesi rollups dApp factory can send and receive ERC-20 & ERC-721 tokens. 
 ```
