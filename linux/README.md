@@ -149,6 +149,12 @@ To create a new application from a basic Python template, run:
 ```
 sunodo create dapp-name --template python
 ```
+
+change directory
+
+```
+cd dapp-name
+```
 ### Building the application
 
 To build an application, run:
