@@ -23,6 +23,7 @@ Currently, two(2) methods exist for creating dApps on Cartesi:
 
 This guide provides a detailed yet accessible explanation of how to use these two(2) distinct methods.
 
+
 ## Getting Started
 
 This guide has 3 versions that caters to macOS, Linux and Windows operating systems. 
