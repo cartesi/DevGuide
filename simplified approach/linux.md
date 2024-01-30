@@ -87,25 +87,7 @@ sudo apt install python3
     npm install -g @sunodo/cli
    ```
 
-
-### Check for RISC-V support
-
-1. Launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
-
-   ```
-   docker buildx ls
-   ```
-
-   If you do not see linux/riscv64 in the platforms list, install QEMU which will be used by Docker to emulate RISC-V instructions to build a Cartesi Machine with the command below: 
-
-   ```
-   sudo apt install qemu-user-static
-   ```
-
-   After installing QEMU, the platform `linux/riscv64` should appear in the platforms list. Docker now supports the RISCV platform
-
-
-
+   
 ## Build a dApp using Sunodo
 
 In this section, we will build a dApp using Sunodo. Subsequent sections will guide you through building dApps using the primitive approach.

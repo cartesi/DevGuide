@@ -56,7 +56,6 @@ Double-click on the Docker.app in the Applications folder to start Docker.
 
 ### Installing Sunodo
 
- > Sunodo is the recommended tool for building dApps on Cartesi. However, you may choose to skip this if you prefer to use the more primitive approach.
 
 1. You can install Sunodo with Homebrew by running this command:
 
@@ -70,22 +69,6 @@ Double-click on the Docker.app in the Applications folder to start Docker.
     npm install -g @sunodo/cli
    ```
 
-
-### Check for RISC-V support
-
-1. Launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
-
-   ```
-   docker buildx ls | grep linux/riscv64
-   ```
-
-   If you do not see linux/riscv64 in the platforms list, install QEMU which will be used by Docker to emulate RISC-V instructions to build a Cartesi Machine with the command below: 
-
-   ```
-   sudo apt install qemu-user-static
-   ```
-
-   After installing QEMU, the platform `linux/riscv64` should appear in the platforms list. Docker now supports the RISCV platform
 
 
 ## Build a dApp using Sunodo

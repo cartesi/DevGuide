@@ -87,17 +87,6 @@ Here are the general requirements:
    sudo apt install yarn
    ```
 
-### Installing Sunodo
-
- > Sunodo is the recommended tool for building dApps on Cartesi. However, you may choose to skip this if you prefer to use the more primitive approach.
-
-1. Install WSL2 and the Ubuntu distro from Microsoft Store and install Sunodo with:
-
-    ```
-    npm install -g @sunodo/cli
-    ```
-
-
 ### Check for RISC-V support
 
 1. In the Windows terminal, launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:

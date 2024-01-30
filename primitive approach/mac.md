@@ -9,7 +9,7 @@ Here are the general requirements:
 - Node.js
 - Yarn
 - Docker Desktop
-- Sunodo
+
 
 ### Installing & Configuring Docker
 
@@ -50,23 +50,6 @@ Double-click on the Docker.app in the Applications folder to start Docker.
     ```
     brew install yarn
     ``` 
-
-
-### Installing Sunodo
-
- > Sunodo is the recommended tool for building dApps on Cartesi. However, you may choose to skip this if you prefer to use the more primitive approach.
-
-1. You can install Sunodo with Homebrew by running this command:
-
-   ```
-    brew install sunodo/tap/sunodo
-   ```
-
-2. Alternatively, you can install Sunodo with Node.js by running:
-
-   ```
-    npm install -g @sunodo/cli
-   ```
 
 
 ### Check for RISC-V support

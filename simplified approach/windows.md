@@ -90,26 +90,12 @@ Here are the general requirements:
 
 ### Installing Sunodo
 
- > Sunodo is the recommended tool for building dApps on Cartesi. However, you may choose to skip this if you prefer to use the more primitive approach.
-
 1. Install WSL2 and the Ubuntu distro from Microsoft Store and install Sunodo with:
 
     ```
     npm install -g @sunodo/cli
     ```
 
-
-### Check for RISC-V support
-
-1. In the Windows terminal, launch Docker Desktop to start the engine and then run this command to check if your Docker supports the RISCV platform:
-
-   ```
-   docker buildx ls
-   ```
-
-   If you installed docker Desktop correctly, you will see the linux/riscv64 in the plataforms list. But if you do not see it there, install QEMU which will be used by Docker to emulate RISC-V instructions to build a Cartesi Machine from this [Link](https://www.qemu.org/download/)
-
-   After installing QEMU, the platform `linux/riscv64` should appear in the platforms list. Docker now supports the RISCV platform
 
 ### Important Note
 

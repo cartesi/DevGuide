@@ -6,7 +6,7 @@ Welcome to the Cartesi dApp Developer Guide! This comprehensive guide will assis
 
 Currently, two(2) methods exist for creating dApps on Cartesi:
 
-- The first is a [simplified approach](/simplified%20approach/)that uses [Sunodo](docs.sunodo.io), an easy-to-use CLI tool that allows for rapid bootstrapping and building. 
+- The first is a [simplified approach](/simplified%20approach/) that uses [Sunodo](docs.sunodo.io), an easy-to-use CLI tool that allows for rapid bootstrapping and building. 
 
 - The second method is the [primitive approach](/primitive%20approach/), which is a more verbose dApp creation process.
 

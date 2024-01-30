@@ -1,4 +1,4 @@
-- This is the **primitive approach**.
+## Primitive approach to dApp development
 
 It is the first and breakthrough solution for building dApps on Cartesi. It is a more verbose dApp creation process, but it is also more flexible and customizable.
 
