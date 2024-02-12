@@ -6,7 +6,7 @@ This guide provides detailed instructions tailored for Windows users using Sunod
 
 ## Setting up Your  Development Environment
 
-> It's essential to have [Windows Subsystem for Linux 2 (WSL2)](https://learn.microsoft.com/en-us/windows/wsl/install) installed and correctly configured to enjoy a seamless dApp development experience with Cartesi Rollups. WSL2 provides a Linux-like environment that aligns with the Cartesi ecosystem.
+> You must have [Windows Subsystem for Linux 2 (WSL2)](https://learn.microsoft.com/en-us/windows/wsl/install) installed and correctly configured to enjoy a seamless dApp development experience with Cartesi Rollups.
 
 
 Here are the general requirements:
