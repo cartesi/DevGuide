@@ -158,7 +158,7 @@ sunodo run
 With your application running, you can send inputs by sending transactions with the input payload.
 
 
-You can send inputs to your application using the sunodo send command, Cast, a command-line tool for making Ethereum RPC calls, or a  custom-built web interface.
+To send inputs to your application, you have a few options available. The `sunodo send` command is one option that you can use. Another option is Cast, a command-line tool enabling you to make Ethereum RPC calls. Additionally, you can build a custom web interface to input data into your application.
 
 #### 1. Using Sunodo
 
