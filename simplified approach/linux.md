@@ -111,20 +111,20 @@ Here are the available templates:
 
 To create a new application from a basic Python template, run:
 
-```
+```shell
 sunodo create dapp-name --template python
 ```
 
 change directory
 
-```
+```shell
 cd dapp-name
 ```
 ### Building the application
 
 To build an application, run:
 
-```
+```shell
 sunodo build
 ```
 
@@ -143,24 +143,49 @@ sunodo run
 
 ### Sending inputs to the application
 
-Your applications can receive inputs by sending transactions with the input payload.
+With your application running, you can send inputs by sending transactions with the input payload.
 
-To send inputs, use the command:
 
-```
+To send inputs to your application, you have a few options available. The `sunodo send` command is one option that you can use. Another option is Cast, a command-line tool enabling you to make Ethereum RPC calls. Additionally, you can build a custom web interface to input data into your application.
+
+#### 1. Using Sunodo
+
+```shell
 sunodo send
 ```
-
-This command guides you through the process of sending inputs interactively.
+This guides you through sending inputs with Sunodo interactively.
 
 ```
-? Select send sub-command (Use arrow keys)
+? Select the send sub-command (Use arrow keys)
 ❯ Send DApp address input to the application.
   Send ERC-20 deposit to the application.
   Send ERC-721 deposit to the application.
   Send ether deposit to the application.
   Send generic input to the application.
 ```
+
+#### 2. Using Cast
+
+```shell
+cast send 0xInputBoxAddress123 "addInput(address,bytes)" 0xDAppAddress456 0xEncodedPayload789 -mnemonic <MNEMONIC> 
+``` 
+
+This command sends an input payload to your application through the InputBox contract. 
+
+> Replace placeholders like `0xInputBoxAddress123`, `0xDAppAddress456`, `0xEncodedPayload789`, and `<MNEMONIC>` with the actual addresses, payload, and mnemonic for your specific use case. If you are on the local anvil node, `0xDAppAddress456` is `0x70ac08179605AF2D9e75782b8DEcD3c22aA4D0C` and `0xInputBoxAddress123` is `0x59b22D57D4f067708AB0c00552767405926dc768`
+
+
+Send “Hello World” which is hex-encoded into `0x48656c6c6f20776f726c64` to your application using Cast:
+
+```shell
+cast send 0x59b22D57D4f067708AB0c00552767405926dc768 "addInput(address,bytes)" 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C 0x48656c6c6f20776f726c64 --mnemonic 'test test test test test test test test test test test junk'
+```
+
+
+#### 3. Using a custom web interface
+You can create a custom frontend that interacts with your application. 
+
+Here is a [React.js + Typescript starter template](https://github.com/prototyp3-dev/frontend-web-cartesi) with all the major functionalities to build on Cartesi.
 
 ### Deploying your application on testnet
 
@@ -285,7 +310,10 @@ Then to stop all services run:
 SUNODO_BIN_PATH=$sunodo_path docker compose -f $sunodo_path/node/docker-compose-validator.yaml -f $sunodo_path/node/docker-compose-anvil.yaml -f $sunodo_path/node/docker-compose-proxy.yaml -f $sunodo_path/node/docker-compose-prompt.yaml -f $sunodo_path/node/docker-compose-snapshot-volume.yaml -f $sunodo_path/node/docker-compose-envfile.yaml --project-directory . down -v
 ```
 
+### Learn more
 
+- [Sunodo Documentation](https://docs.sunodo.io)
+- [Sunodo Starter Templates](https://github.com/cartesi/sunodo-examples)
 
 
 
