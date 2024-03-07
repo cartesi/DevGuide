@@ -17,3 +17,7 @@ This guide has 3 versions that caters to macOS, Linux and Windows operating syst
 ### Windows
 
 [Go to Windows Developer Guide](windows.md)
+
+### Sunodo Trobuleshooting
+
+[Go to our Sunodo Troubleshooting page](sunodoTS.md)
