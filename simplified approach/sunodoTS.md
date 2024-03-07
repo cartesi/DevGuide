@@ -33,7 +33,7 @@ Error: Unsupported Docker Compose version. Minimum required version is 2.21.0. I
 ````
 
 **Solution**
-Install sunodo according the instructions on https://docs.sunodo.io/guide/introduction/installing#system-requirements
+Install sunodo according to the instructions on https://docs.sunodo.io/guide/introduction/installing#system-requirements
 
 ### Problem - **error getting credentials - err: exec: "docker-credential-desktop"**
 
@@ -60,7 +60,7 @@ ERROR: failed to solve: error getting credentials - err: exec: "docker-credentia
 
 **Solution**
 
-See if you have a credsStore line in your ~/.docker/config.json and remove it. Make a backup of the file first, just in case.
+If you have a credsStore line in your ~/.docker/config.json, remove it. Make a backup of the file first, just in case.
 
 ### Problem - Executor failed running
 **Log**
@@ -108,7 +108,7 @@ permission denied on .sunodo/image/hash
 ````
 
 **Solution**
-It's known issue, and will be fixed in the next sunodo patch release.
+It's a known issue and it will be fixed in the next sunodo patch release.
 For now, you can run
 ````
 sudo chmod -R 777 .sunodo/
@@ -166,6 +166,6 @@ where ALICE_SK has been previously assigned to the following value
 
 ## Manjaro OS
 
-For a detailed step by step on the Manjaro OS, please follow the steps on https://hackmd.io/@Abims/S1S__iFdT.
+For detailed step-by-step instructions on the Manjaro OS, please follow the steps on https://hackmd.io/@Abims/S1S__iFdT.
 
 
