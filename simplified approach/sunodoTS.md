@@ -119,7 +119,7 @@ sudo chmod -R 777 .sunodo/
 ### Problem - ERC-20 SunodoToken send ERC20 insufficient allowance(even with a balance of 1000000000 SUN)
 
 **Log**
-![Alice](./sunodoTSimages/alicesun.png)
+![Alice](./sunodoTSimages/alicesun.PNG)
 ![SunodoSend](./sunodoTSimages/sunodosend.PNG)
 
 **Solution**
